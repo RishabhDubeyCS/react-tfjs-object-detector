@@ -84,3 +84,18 @@ FPS control slider
 Dark/Light theme
 
 Custom model support
+
+
+#  MUST SAY LINES in Interview
+
+Memorize this:
+
+“My project runs completely client-side using TensorFlow.js.”
+
+“I used Coco-SSD for real-time object detection.”
+
+“Canvas overlay is used for bounding boxes.”
+
+“WebGL backend improved performance.”
+
+“Confidence filtering improved accuracy.”
