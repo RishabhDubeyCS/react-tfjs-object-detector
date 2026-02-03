@@ -1,16 +1,86 @@
-# React + Vite
+# Object Detection Dashboard – TensorFlow.js
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A real-time object detection web application built with React and TensorFlow.js (Coco-SSD).
+The app uses webcam input to detect multiple objects, draw bounding boxes, and display confidence scores — completely on the client side without any backend.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## React Compiler
+# Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+ Live webcam object detection
 
-## Expanding the ESLint configuration
+ Bounding boxes with class labels
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+ Confidence score filtering
+
+ Optimized 5 FPS inference pipeline
+
+ Canvas overlay visualization
+
+ Runs fully in browser (no server required)
+
+ WebGL backend for faster performance
+# Tech Stack
+
+React.js – UI
+
+TensorFlow.js – ML in browser
+
+Coco-SSD Model – Object detection
+
+React Webcam – Camera stream
+
+HTML Canvas – Drawing boxes
+
+ # Installation
+git clone <your-repo-url>
+cd object-detection-dashboard-tfjs
+npm install
+npm run dev
+
+Open: http://localhost:5173
+
+# Optimizations
+WebGL backend enabled
+
+FPS limited to 5 for stability
+
+Confidence threshold > 0.65
+
+Small object noise removal
+
+RequestAnimationFrame loop control
+
+# Output
+
+Live video feed
+
+Green bounding boxes
+
+Object name + confidence %
+
+Detected objects list panel
+
+# Contributing
+
+Pull requests are welcome. For major changes, please open an issue first.
+
+# Future Enhancements
+
+Screenshot capture feature
+
+Object count analytics
+
+Alert for specific object
+
+Image upload detection
+
+Mobile responsive UI
+
+Voice announcement
+
+FPS control slider
+
+Dark/Light theme
+
+Custom model support
