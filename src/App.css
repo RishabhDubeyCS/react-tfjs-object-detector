@@ -91,11 +91,110 @@ body {
 
 .status-dot.loading { background: #f59e0b; animation: pulse 1s infinite; }
 .status-dot.ready { background: #10b981; }
+.status-dot.error { background: #ef4444; }
+
+.error-banner {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid #ef4444;
+  color: #fca5a5;
+  padding: 12px 20px;
+  border-radius: 8px;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.camera-error-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #1e293b;
+  color: #94a3b8;
+}
+
+.error-icon {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+/* Sidebar Sections */
+.prediction-card {
+  background: var(--card-bg);
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #334155;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 400px;
+  overflow-y: auto;
+  margin-top: 15px;
+}
+
+.prediction-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  border-left: 3px solid var(--primary);
+  transition: transform 0.2s ease;
+}
+
+.prediction-item:hover {
+  transform: translateX(4px);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.class-label {
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.score-badge {
+  background: rgba(0, 242, 255, 0.15);
+  color: var(--primary);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.85em;
+  font-family: monospace;
+}
+
+.scanning-placeholder {
+  color: #94a3b8;
+  font-style: italic;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.scanner-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+  animation: scan 2s linear infinite;
+}
+
+@keyframes scan {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(40px); }
+}
 
 @keyframes pulse {
-  0% { opacity: 1; }
-  50% { opacity: 0.4; }
-  100% { opacity: 1; }
+  0% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.1); }
+  100% { opacity: 1; transform: scale(1); }
 }
 
 .loader-overlay {
@@ -106,4 +205,7 @@ body {
   align-items: center;
   justify-content: center;
   z-index: 20;
+  color: var(--primary);
+  font-weight: bold;
+  letter-spacing: 1px;
 }
