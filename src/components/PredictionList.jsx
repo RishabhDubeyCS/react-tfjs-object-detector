@@ -2,7 +2,7 @@ import React from "react";
 
 const PredictionList = ({ predictions }) => {
   return (
-    <div className="prediction-card">
+    <div className="prediction-card glass-card">
       <h3>Detected Objects</h3>
       <div className="list-container">
         {predictions.map((p, i) => (
@@ -13,7 +13,6 @@ const PredictionList = ({ predictions }) => {
         ))}
         {predictions.length === 0 && (
           <div className="scanning-placeholder">
-            <div className="scanner-line"></div>
             Scanning view...
           </div>
         )}

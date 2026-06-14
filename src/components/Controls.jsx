@@ -1,68 +1,66 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 const Controls = ({
   isRunning,
-  setIsRunning,
+  onToggleRun,
   threshold,
   setThreshold,
-  takeScreenshot,
 }) => {
-
-  const [show, setShow] = useState(true);
+  const [isExpanded, setIsExpanded] = useState(true);
 
   return (
-    <div
-      style={{
-        marginTop: 10,
-        padding: 10,
-        border: "1px solid #ccc",
-        borderRadius: 8,
-        maxWidth: 640,
-        margin: "auto",
-        background: "#0f172a",
-        color: "white",
-      }}
-    >
-      <h3 onClick={() => setShow(!show)} style={{ cursor: "pointer" }}>
-        ⚙ Controls {show ? "▲" : "▼"}
-      </h3>
+    <div className="glass-card controls-card">
+      <div 
+        className="controls-header" 
+        onClick={() => setIsExpanded(!isExpanded)}
+        role="button"
+        tabIndex={0}
+        aria-expanded={isExpanded}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            setIsExpanded(!isExpanded);
+          }
+        }}
+      >
+        <h3 className="controls-title">
+          <span className="icon">⚙️</span> Control Panel
+        </h3>
+        <span className={`chevron ${isExpanded ? 'expanded' : ''}`}>
+          ▼
+        </span>
+      </div>
 
-      {show && (
-        <>
-          {/* Start / Stop */}
-          <div style={{ marginBottom: 10 }}>
+      {isExpanded && (
+        <div className="controls-content">
+          {/* Engine State */}
+          <div className="control-group">
             <button
-              onClick={() => setIsRunning(!isRunning)}
-              style={{ padding: "6px 12px" }}
+              onClick={onToggleRun}
+              className={`primary-button ${isRunning ? 'stop' : 'start'}`}
             >
-              {isRunning ? "⏸ Stop Detection" : "▶ Start Detection"}
+              <span className="icon">{isRunning ? "⏸" : "▶"}</span>
+              {isRunning ? "Pause Engine" : "Start Engine"}
             </button>
           </div>
 
-          {/* Confidence Slider */}
-          <div style={{ marginBottom: 10 }}>
-            <label>
-              Confidence Threshold: {Math.round(threshold * 100)}%
-            </label>
-
+          {/* Threshold Slider */}
+          <div className="control-group">
+            <div className="slider-header">
+              <label htmlFor="threshold-slider">Confidence Threshold</label>
+              <span className="slider-value">{Math.round(threshold * 100)}%</span>
+            </div>
             <input
+              id="threshold-slider"
               type="range"
               min="0.1"
               max="0.9"
               step="0.05"
               value={threshold}
               onChange={(e) => setThreshold(Number(e.target.value))}
-              style={{ width: "100%" }}
+              className="styled-slider"
             />
           </div>
-
-          {/* Screenshot */}
-          <div>
-            <button onClick={takeScreenshot}>
-              📸 Capture Frame
-            </button>
-          </div>
-        </>
+        </div>
       )}
     </div>
   );
